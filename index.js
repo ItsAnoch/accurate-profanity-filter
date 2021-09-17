@@ -14,7 +14,6 @@ const defaultoptions = {
 const letters = [fonts.a,fonts.b,fonts.c,fonts.d,fonts.e,fonts.f,fonts.g,fonts.h,fonts.i,fonts.j,fonts.k,fonts.l,fonts.m,fonts.n,fonts.o,fonts.p,fonts.q,fonts.r,fonts.s,fonts.t,fonts.u,fonts.v,fonts.w,fonts.x,fonts.y,fonts.z]
 
 function convertFont(string) {
-    console.log('running')
     letters.some(letter => {
         for(let i = 0; i < letter.length; i++) {
             string = string.toString().replace(letter[i], JSON.stringify(letter).match(/[a-z]/g))
