@@ -86,7 +86,9 @@ function filter(string, options = defaultoptions) {
     placeholderstring = placeholderstring.replace(/\(( {1,5}?)\)/g, "o");
     placeholderstring = placeholderstring.replace(/3/g, "e");
     placeholderstring = placeholderstring.replace(/1/g, "i");
+
     if (options.fontrecognition && options.fontrecognition === true) {
+        console.log('e')
         placeholderstring = convertFont(placeholderstring)
     }
 

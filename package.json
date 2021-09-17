@@ -1,12 +1,17 @@
 {
   "name": "accurate-profanity-filter",
   "version": "1.0.0",
-  "description": "",
+  "description": "Detect and filter profanity with simple code!",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TheSadDev/accurate-profanity-filter"
+  },
+  "keywords": ["filter", "accurate-filter", "profanity-filter", "censor", "badwords"],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "homepage": "https://github.com/TheSadDev/accurate-profanity-filter/blob/main/README.md"
 }
