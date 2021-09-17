@@ -1,6 +1,6 @@
 {
   "name": "accurate-profanity-filter",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "Detect and filter profanity with simple code!",
   "main": "index.js",
   "scripts": {
