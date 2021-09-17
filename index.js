@@ -12,8 +12,7 @@ const defaultoptions = {
 //Converts some fonts into normal strings
 const letters = [fonts.a,fonts.b,fonts.c,fonts.d,fonts.e,fonts.f,fonts.g,fonts.h,fonts.i,fonts.j,fonts.k,fonts.l,fonts.m,fonts.n,fonts.o,fonts.p,fonts.q,fonts.r,fonts.s,fonts.t,fonts.u,fonts.v,fonts.w,fonts.x,fonts.y,fonts.z]
 
-function convertFont () {
-    let string = this
+function convertFont(string) {
     letters.some(letter => {
         for(let i = 0; i < letter.length; i++) {
             string = string.replace(letter[i], JSON.stringify(letter).match(/[a-z]/g))
@@ -88,7 +87,6 @@ function filter(string, options = defaultoptions) {
     placeholderstring = placeholderstring.replace(/1/g, "i");
 
     if (options.fontrecognition && options.fontrecognition === true) {
-        console.log('e')
         placeholderstring = convertFont(placeholderstring)
     }
 
