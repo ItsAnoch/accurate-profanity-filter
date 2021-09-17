@@ -12,7 +12,7 @@ Accurate-profanity-filter currently has 3 funtions for your needs.
 
 Settings and configurations allow you to personalise this filter to your liking. (If options not parsed, default presets will be used.)
 Sample code:
-```
+```js
 const options = {
     replace: bad word, // Replacements for detected word.
     replacerepeat: false, // Determins if the replace value is repeated for every character of detected word. 
@@ -30,7 +30,7 @@ console.log(result)
 
 .filter() has two arguments, the string and optionally the configurations, it returns the string with censored words.
 Sample code:
-```
+```js
 const string = "Hello asshole"
 const result - APF.filter(string)
 
@@ -40,7 +40,7 @@ console.log(result)
 
 .test() has two arguments, the string and optionally the configurations, it returns a boolean value depending if the string has profanity or not.
 Sample code:
-```
+```js
 const string = "Hello asshole"
 const result - APF.test(string)
 
@@ -50,7 +50,7 @@ console.log(result)
 
 String.prototype.clean() has two arguments, the string and optionally the configurations, it returns the string with censored words.
 Sample code:
-```
+```js
 const string = "Hello asshole"
 const result - string.clean()
 
