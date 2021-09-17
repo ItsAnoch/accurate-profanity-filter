@@ -1,5 +1,5 @@
 
-/*const { censor, ignore } = require('./source.json')
+const { censor, ignore } = require('./source.json')
 const fonts = require('./fonts.json')
 
 const defaultoptions = {
@@ -236,4 +236,3 @@ module.exports = {
     test,
     clean,
 }
-*/
