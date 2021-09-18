@@ -14,7 +14,7 @@ Settings and configurations allow you to personalise this filter to your liking.
 Sample code:
 ```js
 const options = {
-    replace: bad word, // Replacements for detected word.
+    replace: "bad word", // Replacements for detected word.
     replacerepeat: false, // Determins if the replace value is repeated for every character of detected word. 
     fontrecognition: true, // Converts fonts to normal text to avoid bypass (May not support every font)
     addfilter: [], // Adds words to the filter to be detected by the advanced algorithm
@@ -56,4 +56,35 @@ const result - string.clean()
 
 console.log(result)
 //Output: Hello #######
+```
+
++ Let's put it all together
+
+Let's combine some of the code showed above into a simple function!
+
+```js
+const { filter, clean, test } = require('accurate-profanity-filter')
+
+const options = {
+    replace: *, // Replacements for detected word.
+    replacerepeat: true, // Determins if the replace value is repeated for every character of detected word. 
+    fontrecognition: true, // Converts fonts to normal text to avoid bypass (May not support every font)
+    addfilter: ['cool'], // Adds words to the filter to be detected by the advanced algorithm
+    removefilter: ['dick'], // Removes words to the filter to be detected by the advanced algorithm
+}
+
+const string = "Hello ass dick, this is a cool sentence."
+
+const filterResult = filter(string, options)
+const cleanResult = string.clean()
+const testResult = test(string, options)
+
+console.log(filterResult, cleanResult, testResult)
+/*
+Output:
+
+Hello *** dick, this is a **** sentence.
+Hello *** **** this is a cool sentence.
+true
+*/
 ```
