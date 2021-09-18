@@ -2,7 +2,7 @@
 const { censor, ignore } = require('./source.json')
 const fonts = require('./fonts.json')
 
-const defaultoptions = {
+let defaultoptions = {
     replace: "#",
     replacerepeat: true,
     fontrecognition: true,
@@ -21,7 +21,6 @@ function convertFont(string) {
     })
     return string.substring(2)
 }
-
 
 // Creates a custom regex for unfiltered and newly filtered words - As this isn't the main part of the bot it may be inaccurate
 function getRegex(string) {
@@ -80,12 +79,12 @@ function filter(string, options = defaultoptions) {
 
     // Detecting the words
     placeholderstring = placeholderstring.toLowerCase();
-    placeholderstring = placeholderstring.replace(/[^a-zA-Z ]/g, "");
     placeholderstring = placeholderstring.replace(/@/g, "a");
     placeholderstring = placeholderstring.replace(/\|_\|/g, "u");
     placeholderstring = placeholderstring.replace(/\(( {1,5}?)\)/g, "o");
     placeholderstring = placeholderstring.replace(/3/g, "e");
     placeholderstring = placeholderstring.replace(/1/g, "i");
+    placeholderstring = placeholderstring.replace(/[^a-zA-Z ]/g, "");
 
     if (options.fontrecognition && options.fontrecognition === true) {
         placeholderstring = convertFont(placeholderstring)
@@ -97,11 +96,14 @@ function filter(string, options = defaultoptions) {
         for (let i = 0; i < placeholderstring.length; i++) {
             if (!placeholderstring[i].match(whitelistregex)) {
                 const hashes = (options.replace && options.replacerepeat && options.replacerepeat === true) ? getReplacements(placeholderstring[i], options.replace) : ((options.replace) ? options.replace : defaultoptions.replace)
+                placeholderstring[i] = placeholderstring[i].replace(" ", "")
+                placeholderstring[i] = placeholderstring[i].trim()
 
                 content = content.toLowerCase().replace(placeholderstring[i], hashes);
             }
         }
     }
+
     return content;
 }
 
@@ -230,8 +232,21 @@ const clean = String.prototype.clean = function(options = defaultoptions) {
     return content;
 }
 
+const globaloptions = function(options) {  
+    defaultoptions = {
+        replace: (options.replace) ? options.replace : defaultoptions.replace,
+        replacerepeat: (options.replacerepeat != undefined) ? options.replacerepeat : defaultoptions.replacerepeat,
+        fontrecognition: (options.replacerepeat != undefined) ? options.fontrecognition : defaultoptions.fontrecognition,
+        addfilter: (options.addfilter) ? options.addfilter : defaultoptions.addfilter,
+        removefilter: (options.removefilter) ? options.removefilter : defaultoptions.removefilter,
+    }
+
+    return defaultoptions
+}
+
 module.exports = {
     filter,
     test,
     clean,
+    globaloptions
 }

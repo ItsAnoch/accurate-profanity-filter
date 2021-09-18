@@ -10,6 +10,7 @@ With this npm package you can filter and detect bad words with simple Javascript
 
 Accurate-profanity-filter currently has 3 funtions for your needs.
 
++ Options
 Settings and configurations allow you to personalise this filter to your liking. (If options not parsed, default presets will be used.)
 Sample code:
 ```js
@@ -28,6 +29,27 @@ console.log(result)
 //Output: Hello badword
 ```
 
++ Global Options
+You are able to set global options so you don't need to worry about parsing a options variable every time you try to filter a string.
+```js
+const { globaloptions, filter } = require('accurate-profanity-filter')
+
+globaloptions({
+        replace: "badword",
+        replacerepeat: false,
+        fontrecognition: true,
+        addfilter: [],
+        removefilter: [],
+})
+
+const string = "shut up you asshole, get a life lol"
+
+console.log(filter(string))
+
+//Output: shut up you #######, get a life lol
+```
+
++ Filter
 .filter() has two arguments, the string and optionally the configurations, it returns the string with censored words.
 Sample code:
 ```js
@@ -38,6 +60,7 @@ console.log(result)
 //Output: Hello #######
 ```
 
++ Test
 .test() has two arguments, the string and optionally the configurations, it returns a boolean value depending if the string has profanity or not.
 Sample code:
 ```js
@@ -48,6 +71,7 @@ console.log(result)
 //Output: true
 ```
 
++ Clean
 String.prototype.clean() has two arguments, the string and optionally the configurations, it returns the string with censored words.
 Sample code:
 ```js
