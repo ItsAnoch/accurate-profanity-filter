@@ -66,7 +66,7 @@ Let's combine some of the code showed above into a simple function!
 const { filter, clean, test } = require('accurate-profanity-filter')
 
 const options = {
-    replace: *, // Replacements for detected word.
+    replace: "*", // Replacements for detected word.
     replacerepeat: true, // Determins if the replace value is repeated for every character of detected word. 
     fontrecognition: true, // Converts fonts to normal text to avoid bypass (May not support every font)
     addfilter: ['cool'], // Adds words to the filter to be detected by the advanced algorithm
