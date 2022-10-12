@@ -95,3 +95,7 @@ console.log(Output)
     - Faster
     - Default support for more languages
     - Open Sourced
+
+- v5.0.1 - Bug Fixes and Patches
+    - Default language options were causing problems: Fixed!
+    - No additional updates!
