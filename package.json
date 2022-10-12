@@ -1,6 +1,6 @@
 {
-  "name": "profanityfilter",
-  "version": "5.0.0",
+  "name": "accurate-profanity-filter",
+  "version": "5.1.0",
   "description": "Remove profanity from strings with ease! v5.0.0",
   "main": "main.js",
   "type": "module",

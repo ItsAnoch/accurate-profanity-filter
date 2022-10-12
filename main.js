@@ -16,9 +16,9 @@ function Profanity( options = { substitute: '*', addToFilter: { ENG: true, PHL: 
     options = { // Formats paramaters correctly
         substitute: options['substitute'] ?? '*',
 
-        addToFilter: options.addToFilter ? options.addToFilter : {
-            ENG: langFilters['ENG'],
-            PHL: langFilters['PHL'],
+        addToFilter: {
+            ENG: options.addToFilter['ENG'] ? langFilters['ENG'] : [],
+            PHL: options.addToFilter['PHL'] ? langFilters['PHL'] : [],
             CUSTOM: []
         } 
     }
