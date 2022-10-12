@@ -1,15 +1,7 @@
-const { filter, test, globaloptions } = require('./index')
+import Profanity from './main.js'
 
-/* globaloptions({
-    replace: "$",
-    replacerepeat: false,
-    fontrecognition: false,
-    addfilter: [],
-    removefilter: [],
-})
-*/
-
-const string = "shut up you asshole, get a life lol"
-const result = filter(string)
-
-console.log(result)
+console.time()
+const Filter = new Profanity({ substitute: '*'})
+Filter.repeatSubstitute  = true
+const Output = Filter.filter('fuck '.repeat(5));
+console.timeEnd()
