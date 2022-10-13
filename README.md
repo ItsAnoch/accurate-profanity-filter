@@ -99,3 +99,7 @@ console.log(Output)
 - v5.0.1 - Bug Fixes and Patches
     - Default language options were causing problems: Fixed!
     - No additional updates!
+
+- v5.0.2 - Additional Languages added
+    - Added support for French language
+    - Added support for offensive English words

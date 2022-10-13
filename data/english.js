@@ -132,5 +132,5 @@ export default [
     "hentai",
     "hantai",
     "hantei",
-    "hantal"
+    "hantal",
 ]

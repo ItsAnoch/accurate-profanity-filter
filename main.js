@@ -5,19 +5,25 @@ import { clamp, simplify, replaceAtIndex, seive } from './lib/util.js'
 
 import eng from './data/english.js'
 import phl from './data/filipino.js'
+import offensive from './data/offensive.js'
+import french from './data/french.js'
 
 const langFilters = { 
     ENG: new seive(eng), 
     PHL: new seive(phl), 
+    FR: new seive(french),
+    OFFENSIVE: new seive(offensive),
     CUSTOM: [] 
 }
 
-function Profanity( options = { substitute: '*', addToFilter: { ENG: true, PHL: false, CUSTOM: [] }}) {
+function Profanity( options = { substitute: '*', addToFilter: { ENG: true, PHL: false, FR: false, OFFENSIVE: false,  CUSTOM: [] }}) {
     options = { // Formats paramaters correctly
         substitute: options['substitute'] ?? '*',
 
         addToFilter: {
             ENG: options.addToFilter['ENG'] ? langFilters['ENG'] : [],
+            OFFENSIVE: options.addToFilter['OFFENSIVE'] ? langFilters['OFFENSIVE'] : [],
+            FR: options.addToFilter['FR'] ? langFilters['FR'] : [],
             PHL: options.addToFilter['PHL'] ? langFilters['PHL'] : [],
             CUSTOM: []
         } 
@@ -76,6 +82,7 @@ function Profanity( options = { substitute: '*', addToFilter: { ENG: true, PHL: 
         commonLettersMatchedInString.forEach(matchedLetter => {
             const { index } = matchedLetter
             combinedProfaneList.forEach( profaneWord => {
+                if (!profaneWord.includes(matchedLetter)) return;
                 const depth = clamp(this.depth, 1, string.length)
                 const { score, start, end } = searchFromIndex(string, index, depth, profaneWord)
 
